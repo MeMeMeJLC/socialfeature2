@@ -19,12 +19,17 @@ th {text-align: left;}
 <?php
 require_once 'MySQLDB.php';
 require_once 'myFunctions.php';
-$host = 'localhost';
+
+/*$host = 'localhost';
 $dbUser = 'root';
 $dbPass = '';
 $dbName = 'image_annotator';
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName );
+$db->selectDatabase();*/
+$con = new SudokuConnectionDetails();
+$db = $con->Connect(); 
 $db->selectDatabase();
+
 echo "showcomment running";
 $thing = intval($_GET['thing']);
 echo "$thing";

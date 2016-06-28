@@ -3,7 +3,7 @@ include_once ("MySQLDB.php");
 $host = 'localhost';
 $dbUser ='root';
 $dbPass ='';
-$dbName ='image_annotator';
+$dbName ='sudoku_image_annotator';
 
 // create a new database object and connect to server
 $db = new MySQL( $host, $dbUser, $dbPass, $dbName );

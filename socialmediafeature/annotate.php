@@ -21,7 +21,7 @@ $dbName = 'image_annotator' ;
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName ) ;
 $db->selectDatabase();*/
 
-$con = new ConnectionDetails();
+$con = new SudokuConnectionDetails();
 $db = $con->Connect(); 
 $db->selectDatabase();
 
@@ -80,7 +80,7 @@ if(isset($_POST['comment']) and ($_POST['annotationLocationX']) and ($_POST['ann
 <div id="txtHint"><b>Comment will be here...</b></div>
 
 <form method='post' action='annotate.php'>
-	Add an annotation:<br> <input type='text' name='comment'></input><br>Then click the location on the image.
+	Add an annotation:<br> <input type='text' name='comment'></input><br>Click where you want to comment on the image.<br>Then click submit.
 	<input type='hidden' id='annotationLocationX' name='annotationLocationX' value=''></input>
 	<input type='hidden' id='annotationLocationY' name='annotationLocationY' value=''></input>
 	<input type="hidden" name="token" value="<?php echo Token::generate(); ?>"></input>

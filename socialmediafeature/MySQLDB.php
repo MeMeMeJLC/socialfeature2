@@ -2,9 +2,34 @@
 /*
    MySQL Database Connection Class
 */
-class ConnectionDetails
+abstract class TemplateConnectionDetails
 {
-	function Connect(){
+	
+	final function Connect(){
+		$dbName = $this->setDBName();
+		$db = new MySQL( $this->setHost(), $this->setDBUser() , $this->setDBPass() , $dbName );
+		$db->selectDatabase();
+		return $db;
+	}
+	
+	function setHost(){
+		return 'localhost';
+	}
+	
+	function setDBUser(){
+		return 'root';
+	}
+	
+	function setDBPass(){
+		return '';
+	}
+	
+	abstract function setDBName();
+}
+
+class SudokuConnectionDetails extends TemplateConnectionDetails
+{
+	/*function Connect(){
 		$host = 'localhost';
 		$dbUser = 'root';
 		$dbPass = '';
@@ -12,8 +37,28 @@ class ConnectionDetails
 		$db = new MySQL( $host, $dbUser , $dbPass , $dbName );
 		$db->selectDatabase();
 		return $db;
+	}*/
+	function setDBName(){
+		return 'sudoku_image_annotator';
 	}
 }
+
+class MaoriConnectionDetails extends TemplateConnectionDetails
+{
+	/*function Connect(){
+		$host = 'localhost';
+		$dbUser = 'root';
+		$dbPass = '';
+		$dbName = 'image_annotator';
+		$db = new MySQL( $host, $dbUser , $dbPass , $dbName );
+		$db->selectDatabase();
+		return $db;*/
+		
+	function setDBName(){
+		return 'maori_image_annotator';
+	}
+}
+
 
 class MySQL 
 {

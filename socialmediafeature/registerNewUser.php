@@ -23,7 +23,7 @@ $dbName = 'image_annotator' ;
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName ) ;
 $db->selectDatabase();*/
 
-$con = new ConnectionDetails();
+$con = new SudokuConnectionDetails();
 $db = $con->Connect(); 
 $db->selectDatabase();
 
