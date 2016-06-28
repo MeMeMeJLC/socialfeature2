@@ -2,6 +2,17 @@
 /*
    MySQL Database Connection Class
 */
+
+/*single responsibility - This class  has been pulled out from the individual pages where it was keeping the other functions holding multiple responsibilities. Now in the separate class it is doing a single responsibility implementing the connection details.*/
+
+/*open closed - Template method holds the algorithm, then the child classes add detail to it. To add a different database you just create a new child class, no need to touch main code.*/
+
+/*Liskov - A client can rely on the connection details being consistently implemented because the children inherit the same behaviour.*/
+
+/*Interface segregtion - this has no extraneous methods that a client would be forced to rely on. Just the necessary.*/
+
+/*Dependency inversion - This is part of the data persistence layer and is now being kept separate from the business logic layer using an abstraction.*/
+
 abstract class TemplateConnectionDetails
 {
 	
@@ -29,15 +40,6 @@ abstract class TemplateConnectionDetails
 
 class SudokuConnectionDetails extends TemplateConnectionDetails
 {
-	/*function Connect(){
-		$host = 'localhost';
-		$dbUser = 'root';
-		$dbPass = '';
-		$dbName = 'image_annotator';
-		$db = new MySQL( $host, $dbUser , $dbPass , $dbName );
-		$db->selectDatabase();
-		return $db;
-	}*/
 	function setDBName(){
 		return 'sudoku_image_annotator';
 	}
@@ -45,14 +47,6 @@ class SudokuConnectionDetails extends TemplateConnectionDetails
 
 class MaoriConnectionDetails extends TemplateConnectionDetails
 {
-	/*function Connect(){
-		$host = 'localhost';
-		$dbUser = 'root';
-		$dbPass = '';
-		$dbName = 'image_annotator';
-		$db = new MySQL( $host, $dbUser , $dbPass , $dbName );
-		$db->selectDatabase();
-		return $db;*/
 		
 	function setDBName(){
 		return 'maori_image_annotator';
