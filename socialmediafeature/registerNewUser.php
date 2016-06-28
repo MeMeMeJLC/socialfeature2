@@ -31,9 +31,12 @@ echo "<h2>register new user</h2>";
 		$theLastName = $_POST["theLastName"];
 		$hashed = password_hash($thePassword, PASSWORD_BCRYPT, array('cost' => 12));
 		echo "$theUserName, $thePassword, $theFirstName, $theLastName";
-		addAUser($db,$theUserName, $hashed ,$theFirstName, $theLastName);
-
-
+		$user = new User();
+		$user->addAUser($db,$theUserName, $hashed ,$theFirstName, $theLastName);
+		$result = $user->getAUser($db, $theUserName);
+		$displayU = new UserDisplay();
+		$displayU->displayOne($result);
+		
 		sleep(3);
         header ("Location:login.php") ;
 		exit;

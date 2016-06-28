@@ -9,8 +9,10 @@ $db = new MySQL( $host, $dbUser , $dbPass , $dbName );
 $db->selectDatabase();
 //---- Display The users Table
 echo "<h2>users</h2>";
-$users = getusers($db);
-displayusers($users);
+$u = new User();
+$users = $u->getusers($db);
+$u = new UserDisplay();
+$u->displayOne($users);
 
 echo "<h2>Images</h2>";
 $images = getImages($db);

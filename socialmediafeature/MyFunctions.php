@@ -2,6 +2,7 @@
 
 	class User
 	{
+		/*Single Responsibility - Separated User from DisplayUser functions into 2 classes, because shouldn't have presentation and business logic together*/
 		function getAUser($db, $theUserID){
 			$sql = "select * from user where userID='$theUserID'";
 			$result = $db->query($sql); 
@@ -21,8 +22,59 @@
 			$result = $db->query($sql); 
 			$aRow =  $result->fetch();
 			return "$aRow[password]";
+		}
+	
+		function getusers($db){
+			$sql = "select * from user";
+			$result = $db->query($sql);  
+			echo "<br />there were " . $result->size() . " rows <br />";
+			return $result;	
+		}
+		
+		function addAUser($db, $theUserName, $thePassword, $theFirstName, $theLastName){
+			echo "add a user";
+			$sql = "insert into user (userName, password, firstName, lastName) values ('$theUserName', '$thePassword', '$theFirstName', '$theLastName')";
+			$result = $db->query($sql);
+			echo "<br>added new user<br>";
+			/*Open/closed - Removed a direct call to Display()->displayUser. As this meant if display was needing to be changed the user class may also need changing. Moved to the client page using the display function.*/
+		}	
 	}
-	}
+	/*Interface Segregation Principle - Set up an interface so that all implementations of display must have the same functions thereby ensuring any child classes must adhere to the template, and then a client class can use any of the objects interchangably. */
+interface IDisplay
+{
+	function displayOne($type);
+	
+	function displayGroup($type);
+}
+
+class UserDisplay implements IDisplay{
+	
+	function displayOne($users){
+			echo "<table border=1><tr><td>user ID</td><td>username</td><td>password</td><td>First Name</td><td>Last Name</td></tr>";
+			while ( $aRow =  $users->fetch() )
+			{
+				$outputLine = "<tr><td>$aRow[userID]</td>";
+				$outputLine .= "<td>$aRow[userName]</td>";
+				$outputLine .= "<td>$aRow[password]</td>";
+				$outputLine .= "<td>$aRow[firstName]</td>";
+				$outputLine .= "<td>$aRow[lastName]</td>
+				</tr>";
+				echo $outputLine;
+			}
+			echo "</table>";
+		}
+		
+		function displayGroup($user){
+			echo "<table border=1><tr><td>user ID</td><td>user name</td><td>password</td><td>first name</td><td>last name</td></tr>";
+			$aRow = $user->fetch();
+			$outputLine = "<tr><td>$aRow[userID]</td>";
+			$outputLine .= "<td>$aRow[userName]</td>";
+			$outputLine = "<tr><td>$aRow[password]</td>";
+			$outputLine .= "<td>$aRow[firstName]</td>";
+			$outputLine .= "<td>$aRow[lastName]</td></tr>";
+			echo $outputLine."</table><br>";
+		}
+}
 	
 	/*function getAUser($db, $theUserID){
 		$sql = "select * from user where userID='$theUserID'";
@@ -45,12 +97,12 @@
 		return "$aRow[password]";
 	}*/
 	
-	function getusers($db){
+	/*function getusers($db){
 		$sql = "select * from user";
 		$result = $db->query($sql);  
 		echo "<br />there were " . $result->size() . " rows <br />";
 		return $result;	
-	}
+	}*/
 
 	function getAnImage($db, $theImageID){
 		$sql = "select * from image where image_ID=$theImageID";
@@ -88,7 +140,7 @@
 	}
 	
 	
-	function addAUser($db, $theUserName, $thePassword, $theFirstName, $theLastName){
+	/*function addAUser($db, $theUserName, $thePassword, $theFirstName, $theLastName){
 		echo "add a user";
 		$sql = "insert into user (userName, password, firstName, lastName) values ('$theUserName', '$thePassword', '$theFirstName', '$theLastName')";
 		$result = $db->query($sql);
@@ -96,7 +148,7 @@
 		$sql = "select * from user where userName='$theUserName'";
 		$result = $db->query($sql);
 		displayAUser($result);
-	}
+	}*/
 	
 	function addAnImage($db, $theImageLocation){
 		$sql = "insert into image (image_location) values ('$theImageLocation')";
@@ -122,7 +174,7 @@ $dbName = 'image_annotator';
 		$result = $db->query($sql);
 	}
 	
-	function displayusers($users){
+	/*function displayusers($users){
 		echo "<table border=1><tr><td>user ID</td><td>username</td><td>password</td><td>First Name</td><td>Last Name</td></tr>";
 		while ( $aRow =  $users->fetch() )
 		{
@@ -135,9 +187,9 @@ $dbName = 'image_annotator';
 			echo $outputLine;
 		}
 		echo "</table>";
-	}
+	}*/
 	
-	function displayAUser($user){
+	/*function displayAUser($user){
 		echo "<table border=1><tr><td>user ID</td><td>user name</td><td>password</td><td>first name</td><td>last name</td></tr>";
 		$aRow = $user->fetch();
 		$outputLine = "<tr><td>$aRow[userID]</td>";
@@ -146,7 +198,7 @@ $dbName = 'image_annotator';
 		$outputLine .= "<td>$aRow[firstName]</td>";
 		$outputLine .= "<td>$aRow[lastName]</td></tr>";
 		echo $outputLine."</table><br>";
-	}
+	}*/
 	
 	function displayAnImage(
 	$image){

@@ -13,7 +13,8 @@ echo "Login";
 if(isset($_POST["theUserName"], $_POST["thePassword"])){
 		$theUserName = $_POST["theUserName"];
 		$thePassword = $_POST["thePassword"];
-	    $stored_password = getAUserNameAndPassword($db, $theUserName);
+		$user = new User();
+	    $stored_password = $user->getAUserNameAndPassword($db, $theUserName);
 		#echo $thePassword." ".$stored_password;
 		
 		if(password_verify( $thePassword, $stored_password)){

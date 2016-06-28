@@ -48,7 +48,8 @@ session_start();
 if(isset($_SESSION["theUserName"], $_SESSION["thePassword"])){
 		$theUserName = $_SESSION["theUserName"];
 		$thePassword = $_SESSION["thePassword"];
-	    $stored_password = getAUserNameAndPassword($db, $theUserName);#turn this into a token check
+		$user = new User();
+	    $stored_password = $user->getAUserNameAndPassword($db, $theUserName);#turn this into a token check
 		
 		if(password_verify( $thePassword, $stored_password)){
 			echo "<br>you are in!";
