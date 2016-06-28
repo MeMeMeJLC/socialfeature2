@@ -1,0 +1,10 @@
+<form method="post" action="annotate.php">
+	Add an annotation: <input type="text" name="comment"></input><br>
+	<input type="text" id="annotationLocation" name="annotationLocation" value=""></input>
+	<input type="submit"></input>
+</form>
+
+<script type="text/javascript">
+  // #chk1 exists in DOM, this works
+  document.getElementById('annotationLocation').value = "chips";
+</script>
