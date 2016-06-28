@@ -1,12 +1,16 @@
 <?php
 require_once 'MySQLDB.php';
 require_once 'myFunctions.php';
-$host = 'localhost';
+/*$host = 'localhost';
 $dbUser = 'root';
 $dbPass = '';
 $dbName = 'image_annotator';
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName );
+$db->selectDatabase();*/
+$con = new ConnectionDetails();
+$db = $con->Connect(); 
 $db->selectDatabase();
+
 //---- Display The users Table
 echo "<h2>users</h2>";
 $u = new User();

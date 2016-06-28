@@ -14,12 +14,17 @@ console.log(y);
 require_once("MyFunctions.php");
 require_once("MYSQLDB.php");
 require_once("Token.php");
-$host = 'localhost' ;
+/*$host = 'localhost' ;
 $dbUser = 'root' ;
 $dbPass = '' ;
 $dbName = 'image_annotator' ;
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName ) ;
+$db->selectDatabase();*/
+
+$con = new ConnectionDetails();
+$db = $con->Connect(); 
 $db->selectDatabase();
+
 session_start();
 
 $theImageID = $_SESSION['theImageID'];

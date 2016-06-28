@@ -8,13 +8,16 @@ else {
 }
 require_once("MyFunctions.php");
 include_once "MYSQLDB.php";
-$host = 'localhost' ;
+/*$host = 'localhost' ;
 $dbUser = 'root' ;
 $dbPass = '' ;
 $dbName = 'image_annotator' ;
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName ) ;
-$db->selectDatabase();
+$db->selectDatabase();*/
 
+$con = new ConnectionDetails();
+$db = $con->Connect(); 
+$db->selectDatabase();
 
 
 echo "<h2>Images</h2>";

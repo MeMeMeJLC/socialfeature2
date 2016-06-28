@@ -15,11 +15,16 @@
 <?php
 require_once("MyFunctions.php");
 include_once "MYSQLDB.php";
-$host = 'localhost' ;
+
+/*$host = 'localhost' ;
 $dbUser = 'root' ;
 $dbPass = '' ;
 $dbName = 'image_annotator' ;
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName ) ;
+$db->selectDatabase();*/
+
+$con = new ConnectionDetails();
+$db = $con->Connect(); 
 $db->selectDatabase();
 
 echo "<h2>register new user</h2>";

@@ -2,6 +2,18 @@
 /*
    MySQL Database Connection Class
 */
+class ConnectionDetails
+{
+	function Connect(){
+		$host = 'localhost';
+		$dbUser = 'root';
+		$dbPass = '';
+		$dbName = 'image_annotator';
+		$db = new MySQL( $host, $dbUser , $dbPass , $dbName );
+		$db->selectDatabase();
+		return $db;
+	}
+}
 
 class MySQL 
 {

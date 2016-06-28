@@ -34,11 +34,15 @@ mysqli_select_db($con,"ajax_demo");*/
 require_once 'MySQLDB.php';
 require_once 'myFunctions.php';
 require_once 'changeAnno.php';
-$host = 'localhost';
+/*$host = 'localhost';
 $dbUser = 'root';
 $dbPass = '';
 $dbName = 'image_annotator';
 $db = new MySQL( $host, $dbUser , $dbPass , $dbName );
+$db->selectDatabase();*/
+
+$con = new ConnectionDetails();
+$db = $con->Connect(); 
 $db->selectDatabase();
 
 
