@@ -18,7 +18,8 @@ if(isset($_POST["submit"])) {
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
-		$user = addAnImage($db,basename($_FILES["fileToUpload"]["name"]));
+		$i = new Image();
+		$user = $i->addAnImage($db,basename($_FILES["fileToUpload"]["name"]));
 		echo '<img src="'.$target_file.'" /><br />';
     } else {
         echo "File is not an image.";

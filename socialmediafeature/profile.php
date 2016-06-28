@@ -18,8 +18,10 @@ $db->selectDatabase();
 
 
 echo "<h2>Images</h2>";
-$images = getImages($db);
-displayImages($images);
+$i = new Image();
+$images = $i->getImages($db);
+$d = new ImageDisplay();
+$d->displayGroup($images);
 
 if(isset($_POST["image"])){
 	$_SESSION['theImageID'] = $_POST["image"];

@@ -13,8 +13,4 @@ session_destroy();
 
 <a href="login.php">Login/Register</a>
 
-<br /><br />
-
-<a href="addImage.php">Add Image</a>
-
 </html>

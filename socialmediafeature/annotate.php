@@ -25,11 +25,15 @@ session_start();
 $theImageID = $_SESSION['theImageID'];
 $theUserID = $_SESSION['theUserID'];
 #echo "userid = " . $theUserID."<br>";
-$image = getAnImage($db, $theImageID);
+$i = new Image();
+$image = $i->getAnImage($db, $theImageID);
 
-$imageLocation = getImageLocation($db, $theImageID);
+$imageLocation = $i->getImageLocation($db, $theImageID);
 #echo "$imageLocation";
-getImageAnnotations($db, $theImageID);
+$a = new Annotation();
+$a->getImageAnnotations($db, $theImageID);
+/*$d = AnnotationDisplay();
+$d->displayGroup($result);*/
 echo "<image onclick=getAnAnnotationLocation(event) src='resources/images/$imageLocation'></image>";	
 //displayAnImage($image);
 //$theAnnotationLocation = displayAnImageToAnnotate($image);
@@ -45,7 +49,8 @@ if(isset($_POST['comment'], $_POST['annotationLocationX'], $_POST['annotationLoc
 			echo '<h1>Processed note!</h1>';
 				$theAnnotationLocationX = " ".$_POST['annotationLocationX'];
 	$theAnnotationLocationY = " ".$_POST['annotationLocationY']." ";
-	addAnAnnotation($db, $theImageID, $theUserID, $comment, $theAnnotationLocationX, $theAnnotationLocationY);
+
+	$a->addAnAnnotation($db, $theImageID, $theUserID, $comment, $theAnnotationLocationX, $theAnnotationLocationY);
 	header("Refresh:0");
 			}
 		}

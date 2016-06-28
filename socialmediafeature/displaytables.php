@@ -15,12 +15,16 @@ $u = new UserDisplay();
 $u->displayOne($users);
 
 echo "<h2>Images</h2>";
-$images = getImages($db);
-displayImages($images);
+$i = new Image();
+$images = $i->getImages($db);
+$d = new ImageDisplay();
+$d->displayGroup($images);
 
 echo "<h2>Annotation</h2>";
-$annotations = getAnnotations($db);
-displayAnnotations($annotations);
+$a = new Annotation();
+$annotations = $a->getAnnotations($db);
+$d = new AnnotationDisplay();
+$d->displayGroup($annotations);
 
 
 ?>

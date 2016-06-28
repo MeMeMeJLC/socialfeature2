@@ -12,6 +12,7 @@ $db->selectDatabase();
 			if (isset($_POST['newComment'])){
 				$newComment = $_POST['newComment'];
 				$theAnnotationID = $_POST['annotationID'];
-				updateAnnotation($db, $theAnnotationID, $newComment);
+				$a = new Annotation();
+				$a->updateAnnotation($db, $theAnnotationID, $newComment);
 				header("location:annotate.php");
 			}
