@@ -8,12 +8,6 @@ else {
 }
 require_once("MyFunctions.php");
 include_once "MYSQLDB.php";
-/*$host = 'localhost' ;
-$dbUser = 'root' ;
-$dbPass = '' ;
-$dbName = 'image_annotator' ;
-$db = new MySQL( $host, $dbUser , $dbPass , $dbName ) ;
-$db->selectDatabase();*/
 
 $con = new SudokuConnectionDetails();
 $db = $con->Connect(); 
@@ -32,6 +26,13 @@ if(isset($_POST["image"])){
 	//echo $_SESSION['imageID'];
 }
 
+echo "<h2>All Annotations</h2>";
+$all = new AllTables();
+$allInfo = $all->getAllTables($db);
+
+$allD = new AllDisplay();
+$allD->displayGroup($allInfo);
+echo "<br>";
 ?>
 <html>
 <!--<br><br>

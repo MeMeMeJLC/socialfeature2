@@ -1,0 +1,21 @@
+Must Have
+	Way to annotate images
+	Data Persistence
+	Have location specific annotations
+	Way to modify the annotations
+	Unique usernames and passwords to login 
+	Select image to look at the annotations of
+	
+Should Have
+	XSS, CSRF, SQL Injection protection
+	Register new users
+	Display data tables
+	Annotation icon
+	
+Could have
+	Upload images
+
+Won't have
+	Modifying users
+	Modifying images
+	Deleting annotations
