@@ -1,10 +1,5 @@
 <?php
 
-	/*class DataTables
-	{
-		
-	}*/
-
 	class User
 	{
 		/*Single Responsibility - Separated User from DisplayUser functions into 2 classes, because shouldn't have presentation and business logic together*/
@@ -58,7 +53,7 @@ class Image
 		$sql = "select image_location from image where image_ID=$theImageID";
 		$result = $db->query($sql);
 		
-		return "105.png"/*$result*/;
+		return $result;
 	}
 	
 	function getImages($db){
@@ -224,6 +219,7 @@ class ImageDisplay implements IDisplay
 			$outputLine .= "<td><img src='resources/images/$aRow[image_location]'</td>";
 			$outputLine .= "<td>
 			<form method='post' action='profile.php'>
+				<input type='text' name='imageID' value='$aRow[image_id]'>
 				<input type='submit' value='$aRow[image_id]' name='image'>
 			</form></td></tr>"; //link to image id
 			echo $outputLine;

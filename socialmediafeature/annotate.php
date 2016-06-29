@@ -28,18 +28,22 @@ $db->selectDatabase();
 session_start();
 
 $theImageID = $_SESSION['theImageID'];
+
 $theUserID = $_SESSION['theUserID'];
 #echo "userid = " . $theUserID."<br>";
 $i = new Image();
-$image = $i->getAnImage($db, $theImageID);
+$image = $i->getImageLocation($db, $theImageID);
 
 $imageLocation = $i->getImageLocation($db, $theImageID);
-#echo "$imageLocation";
+
 $a = new Annotation();
 $a->getImageAnnotations($db, $theImageID);
 /*$d = AnnotationDisplay();
 $d->displayGroup($result);*/
-echo "<image onclick=getAnAnnotationLocation(event) src='resources/images/$imageLocation'></image>";	
+
+$i= new ImageDisplay();
+$imageLocation = $i->displayOne($imageLocation); 
+/*echo "<image onclick=getAnAnnotationLocation(event) src='resources/images/$imageLocation'></image>";*/	
 //displayAnImage($image);
 //$theAnnotationLocation = displayAnImageToAnnotate($image);
 

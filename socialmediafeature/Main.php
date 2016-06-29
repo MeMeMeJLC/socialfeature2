@@ -4,7 +4,7 @@ session_start();
 session_destroy();
 ?>
 <html>
-
+<h1>image annotator</h1>
 <a href="build.php">Build The Database</a>
 <br /><br />
 
@@ -12,5 +12,6 @@ session_destroy();
 <br /><br />
 
 <a href="login.php">Login/Register</a>
+
 
 </html>

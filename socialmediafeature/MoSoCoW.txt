@@ -19,3 +19,33 @@ Won't have
 	Modifying users
 	Modifying images
 	Deleting annotations
+	
+Test Scenarios 
+	1. 	user Bill Bob registers as a new user BillB, pword password1
+		logs in
+		goes in to the first image
+		looks at the annotation
+		
+	2. user Frank Bill registers as a new user FBill3, pword phw456!>?
+		logs in
+		uploads image sudoku.png
+		adds an annotation at the top right hand corner "this should be a 4"
+		exits the image and goes back to the profile
+		looks at image 1 and adds an annotation at bottom left corner
+		
+	3. user Jeremy Cook registers as a new user jc00kE, pword icantrememberpasswords
+		logs in 
+		uploads image maori-sign.jpg
+		adds annotation "this means hello"
+		change annotation to "this means hello to 2 people"
+		exit the image, and go back in and make sure image and annotations are still there
+		
+	4. user Jeff Bee registers as JBee, pword helloworld
+		logs in
+		goes into maori-sign image
+		tries to modify the annotation (shouldnt be able to do this)
+		creates own annotation saying "this means 'fish'"
+		
+	5. Frank Bill relogs in
+		goes into image sudoku.png
+		changes previous annotation he left to "oops should be 8"

@@ -9,7 +9,7 @@ else {
 require_once("MyFunctions.php");
 include_once "MYSQLDB.php";
 
-$con = new SudokuConnectionDetails();
+$con = new MaoriConnectionDetails();
 $db = $con->Connect(); 
 $db->selectDatabase();
 
@@ -21,7 +21,7 @@ $d = new ImageDisplay();
 $d->displayGroup($images);
 
 if(isset($_POST["image"])){
-	$_SESSION['theImageID'] = $_POST["imageID"];
+	$_SESSION['theImageID'] = $_POST["image"];
 	header("Location:annotate.php");
 	//echo $_SESSION['imageID'];
 }

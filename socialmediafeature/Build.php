@@ -69,6 +69,7 @@ $result = $db->query($sql);
 $sql = "insert into annotation(annotation_comment, annotation_location_x, annotation_location_y, userID_fk, image_id_fk) values ('this is comment 1', 111, 222, 1, 1)";
 $result = $db->query($sql);
 
+
 ?>
 <html>
 <body>
